@@ -7,7 +7,7 @@ var plugins = require('gulp-load-plugins')(); // tous les plugins de package.jso
 // Variables de chemins
 var sourcePath = './src'; // dossier de travail
 var destinationPath = './dist'; // dossier de prod
-var bower = './bower_components'; // dossier bower
+var bowerPath = './bower_components'; // dossier bower
 var flagError = false; // flag pour check erreurs
 
 // Tâche Initialisation Bower
@@ -45,6 +45,18 @@ gulp.task('css', function () {
       }
     });
 });
+
+// Tâche "jQuery"
+gulp.task('jquery', function () {
+  return gulp.src(bowerPath + '/jquery/dist/jquery.min.js')
+    .pipe(gulp.dest(destinationPath + '/assets/js/'))
+    .on('end', function () {
+      plugins.util.log(plugins.util.colors.bgGreen.black('♠ Fichier jQuery ajouté au projet avec succès ♠'));
+    });
+});
+
+// Tâche d'installation des assets
+gulp.task('assets', ['jquery']);
 
 // Tâche Watch (surveillance)
 gulp.task('watch', function () {
