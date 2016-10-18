@@ -22,7 +22,7 @@ gulp.task('css', function () {
   return gulp.src(sourcePath + '/assets/sass/*.scss')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass().on('error', function(error, result) {
-      plugins.util.log(plugins.util.colors.bgRed.white('♠ Echec compilation des fichiers SCSS ♠'));
+      plugins.util.log(plugins.util.colors.bgRed.black('♠ Echec compilation des fichiers SCSS ♠'));
       plugins.util.log(error.message);
       this.emit('end');
       flagError = true;
@@ -38,10 +38,10 @@ gulp.task('css', function () {
     .on('end', function () {
       // à améliorer avec AppleScript pour les nofitications OS (voir équivalent windows)
       if (flagError) {
-        plugins.util.log(plugins.util.colors.bgYellow.white('♠ Voir l\'erreur ci-dessous pour continuer le script ♠'));
+        plugins.util.log(plugins.util.colors.bgCyan.black('♠ Voir l\'erreur ci-dessous pour continuer le script ♠'));
         flagError = false;
       } else {
-        plugins.util.log(plugins.util.colors.bgGreen.white('♠ Fichiers SCSS compilé avec succès ♠'));
+        plugins.util.log(plugins.util.colors.bgGreen.black('♠ Fichiers SCSS compilé avec succès ♠'));
       }
     });
 });
