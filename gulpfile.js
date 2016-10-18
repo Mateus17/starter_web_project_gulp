@@ -16,24 +16,23 @@ gulp.task('bower', function () {
   });
 });
 
-// Tâche CSS (compilation, réorganisation)
+// Tâche CSS
 gulp.task('css', function () {
   return gulp.src(sourcePath + '/assets/sass/*.scss')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass().on('error', plugins.sass.logError))
     .pipe(plugins.autoprefixer())
+    .pipe(plugins.csso({
+      debug: false // true pour vérifier s'il n'y a pas eu de pb lors du minify css
+    }))
     .pipe(plugins.sourcemaps.write('./maps'))
-    //.pipe(plugins.csscomb())
-    //.pipe(plugins.cssbeautify({
-    //  indent: '  '
-    // }))
     .pipe(gulp.dest(destinationPath + '/assets/css/'))
-//    .on('end', function () {
-//      plugins.util.log(plugins.util.colors.bgGreen.white.bold('♠ Fichiers SCSS compilé avec succès ' + plugins.util.colors.bgGreen.red.bold('(ou pas)') + ' ♠'));
-//    })
+    //    .on('end', function () {
+    //      plugins.util.log(plugins.util.colors.bgGreen.white.bold('♠ Fichiers SCSS compilé avec succès ' + plugins.util.colors.bgGreen.red.bold('(ou pas)') + ' ♠'));
+    //    })
   ;
 });
 
-gulp.task('default', function() {
+gulp.task('default', function () {
   // place code for your default task here
 });
