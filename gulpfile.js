@@ -21,7 +21,9 @@ gulp.task('css', function () {
   return gulp.src(sourcePath + '/assets/sass/*.scss')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass().on('error', plugins.sass.logError))
-    .pipe(plugins.autoprefixer())
+    .pipe(plugins.autoprefixer({
+      browsers: ['> .1%'] // En fonction des stats de caniuse.com // PS: Attention aux @keyframes
+    }))
     .pipe(plugins.csso({
       debug: false // true pour vérifier s'il n'y a pas eu de pb lors du minify css
     }))
@@ -33,6 +35,12 @@ gulp.task('css', function () {
   ;
 });
 
-gulp.task('default', function () {
-  // place code for your default task here
+//gulp.task('default', function () {
+//  // place code for your default task here
+//});
+
+gulp.task('watch', function () {
+  gulp.watch(sourcePath + '/assets/sass/*.scss', ['css']);
 });
+
+gulp.task('default', ['watch']);
