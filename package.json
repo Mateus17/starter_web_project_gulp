@@ -1,5 +1,5 @@
 {
-  "name": "new_starter_gulp",
+  "name": "starter_web_project_gulp",
   "version": "2.0.0",
   "description": "Starter Gulp pour intégration web",
   "main": "index.js",
@@ -10,7 +10,12 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-bower": "0.0.13",
-    "gulp-load-plugins": "^1.3.0"
+    "gulp-cssbeautify": "^0.1.3",
+    "gulp-csscomb": "^3.0.8",
+    "gulp-load-plugins": "^1.3.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.1.1"
   }
 }
