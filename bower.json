@@ -1,0 +1,22 @@
+{
+  "name": "new_starter_gulp",
+  "description": "Starter Gulp pour intégration web",
+  "main": "index.js",
+  "authors": [
+    "Mathieu Rodrigues"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "^3.1.1"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "new_starter_gulp",
+  "version": "2.0.0",
+  "description": "Starter Gulp pour intégration web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mathieu Rodrigues",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
+    "gulp-load-plugins": "^1.3.0"
+  }
+}
