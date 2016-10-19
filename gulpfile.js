@@ -41,7 +41,7 @@ gulp.task('css', function () {
         plugins.util.log(plugins.util.colors.bgCyan.black('♠ Voir l\'erreur ci-dessous pour continuer le script ♠'));
         flagError = false;
       } else {
-        plugins.util.log(plugins.util.colors.bgGreen.black('♠ Fichiers SCSS compilé avec succès ♠'));
+        plugins.util.log(plugins.util.colors.bgGreen.black('♠ Fichiers SCSS compilés avec succès ♠'));
       }
     });
 });
@@ -55,8 +55,31 @@ gulp.task('jquery', function () {
     });
 });
 
+// Tâche "customBootstrap"
+gulp.task('custombootstrap', function () {
+  return gulp.src(sourcePath + '/assets/customBootstrap/customBootstrap.scss')
+    .pipe(plugins.sourcemaps.init())
+    .pipe(plugins.sass().on('error', function(error, result) {
+      plugins.util.log(plugins.util.colors.bgRed.black('♠ Echec compilation pour le Bootstrap Custom ♠'));
+      plugins.util.log(error.message);
+      this.emit('end');
+      flagError = true;
+    }))
+    .pipe(plugins.sourcemaps.write('./maps'))
+    .pipe(gulp.dest(destinationPath + '/assets/css/'))
+    .on('end', function () {
+      // à améliorer avec AppleScript pour les nofitications OS (voir équivalent windows)
+      if (flagError) {
+        plugins.util.log(plugins.util.colors.bgCyan.black('♠ Voir l\'erreur ci-dessous pour continuer le script ♠'));
+        flagError = false;
+      } else {
+        plugins.util.log(plugins.util.colors.bgGreen.black('♠ Fichiers SCSS Bootstrap Custom compilés avec succès ♠'));
+      }
+    });
+});
+
 // Tâche d'installation des assets
-gulp.task('assets', ['jquery']);
+gulp.task('assets', ['jquery', 'custombootstrap']);
 
 // Tâche Watch (surveillance)
 gulp.task('watch', function () {
