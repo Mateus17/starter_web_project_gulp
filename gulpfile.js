@@ -65,6 +65,9 @@ gulp.task('custombootstrap', function () {
       this.emit('end');
       flagError = true;
     }))
+    .pipe(plugins.csso({
+      debug: false // true pour vérifier s'il n'y a pas eu de pb lors du minify css
+    }))
     .pipe(plugins.sourcemaps.write('./maps'))
     .pipe(gulp.dest(destinationPath + '/assets/css/'))
     .on('end', function () {
