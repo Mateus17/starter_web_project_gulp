@@ -7,13 +7,14 @@ var plugins = require('gulp-load-plugins')(); // tous les plugins de package.jso
 // Variables de chemins
 var sourcePath = './src'; // dossier de travail
 var destinationPath = './dist'; // dossier de prod
-var bowerPath = './bower_components'; // dossier bower
+var bowerPath = sourcePath + '/assets'; // dossier bower
 var flagError = false; // flag pour check erreurs
 
 // Tâche Initialisation Bower
 gulp.task('bower', function () {
   return plugins.bower({
-    cmd: 'update'
+    cmd: 'update',
+    directory: bowerPath
   });
 });
 
