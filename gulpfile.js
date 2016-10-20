@@ -56,9 +56,9 @@ gulp.task('jquery', function () {
     });
 });
 
-// Tâche "customBootstrap"
-gulp.task('custombootstrap', function () {
-  return gulp.src(sourcePath + '/assets/customBootstrap/customBootstrap.scss')
+// Tâche "bootstrap"
+gulp.task('bootstrap', function () {
+  return gulp.src(bowerPath + '/bootstrap-sass/assets/stylesheets/_bootstrap.scss')
     .pipe(plugins.sourcemaps.init())
     .pipe(plugins.sass().on('error', function(error, result) {
       plugins.util.log(plugins.util.colors.bgRed.black('♠ Echec compilation pour le Bootstrap Custom ♠'));
